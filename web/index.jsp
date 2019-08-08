@@ -13,5 +13,8 @@
   <body>
   <h2>开工</h2>
   <h2>再次开工</h2>
+  <form>
+    用户名<input type="text" name="username">
+  </form>
   </body>
 </html>
