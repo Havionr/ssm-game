@@ -12,7 +12,7 @@
 </head>
 <body>
 <form>
-    王汇鑫<input type="text">
+    王汇鑫<input type="text" name="wanghuixin">
 </form>
 </body>
 </html>
