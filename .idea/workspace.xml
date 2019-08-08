@@ -127,7 +127,37 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ssm-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm-game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm-game" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm-game" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm-game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm-game" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -167,7 +197,7 @@
       <option name="presentableId" value="Default" />
       <updated>1565250550592</updated>
       <workItem from="1565250558221" duration="12392000" />
-      <workItem from="1565272476993" duration="3711000" />
+      <workItem from="1565272476993" duration="4539000" />
     </task>
     <task id="LOCAL-00001" summary="搭建框架">
       <created>1565251635904</created>
@@ -187,12 +217,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16103000" />
+    <option name="totallyTimeSpent" value="16931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1871" height="1080" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49548194" weight="0.2520503" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49548194" visible="true" weight="0.25177887" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -211,7 +241,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.30477223" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.30477223" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Spring" order="13" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" />
