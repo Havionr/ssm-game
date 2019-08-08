@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        "> <!-- bean definitions here -->
+<!--配置注解扫描-->
+    <context:component-scan base-package="com.game"></context:component-scan>
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+<!--    引入DB数据源-->
+<!--    引入外部文件,引入数据库信息-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:config.properties"/>
+<!--        一般出现location都要使用classpath-->
+    </bean>
+
+<!--    配置数据源,在mybatis配置文件中不用再配置数据源相关信息-->
+<!--    使用的dbcp连接池-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+<!--    配置SqlSessionFactory,使用整合包的类SqlSessionFactoryBean,做指定配置文件路径以及扫描mapper-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+<!--        引入mybatis的配置文件-->
+        <property name="configLocation" value="classpath:mybatisConfigure.xml"/>
+<!--        扫描mapper.xml映射-->
+<!--        <property name="mapperLocations" value="classpath:com/sky/mapperxml/*.xml"/>-->
+<!--        当存在多个包都有xml文件时-->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:com/game/mapper/mapperxml/*.xml</value>
+            </list>
+        </property>
+    </bean>
+
+<!--    配置SqlSession,spring 提供sqlsession-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+<!--    SqlSessionTemplate中的SqlSessionFactory属性没有set方法,不能使用set注入,有将SqlSessionFactory作为参数的构造方法,所以使用构造器注入    -->
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
+<!--    使用spring管理接口 使用整合包类MapperFactoryBean  mapperInterface属性是mapper接口路径
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.sky.mapper.UserMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>-->
+
+<!--    当存在多个接口时,配置接口扫描包-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.sky.mapper"/>
+    </bean>
+
+    <!--    注解事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<!--
+    事务管理
+    使用的Mybatis,使用"org.springframework.jdbc.datasource.DataSourceTransactionManager"
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+  使用注解的方式
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+
+&lt;!&ndash;    配置事务通知,对那些方法加强&ndash;&gt;
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="transferMoney"/>
+            <tx:method name="update*"/>
+            <tx:method name="add*"/>
+            <tx:method name="delete*"/>
+            <tx:method name="query*" read-only="true"/>
+            <tx:method name="find" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+&lt;!&ndash;    配置切面&ndash;&gt;
+    <aop:config>
+        <aop:pointcut id="txPointcut" expression="bean(userService)"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"></aop:advisor>
+    </aop:config>
+-->
+
+
+</beans>
