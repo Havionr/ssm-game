@@ -12,7 +12,9 @@
 </head>
 <body>
 <form>
-    王汇鑫<input type="text">
+    王汇鑫<input type="text" name="wanghuixin">
+    新内容<input type="text" name="wanghuixin">
+    更新内容<input type="text" name="wanghuixin">
 </form>
 </body>
 </html>
