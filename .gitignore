@@ -1,4 +1,7 @@
-java
+#数据库配置文件
+src/config.properties
+
+#java
 *.class
  
 # Eclipse
